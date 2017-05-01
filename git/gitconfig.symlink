@@ -1,0 +1,14 @@
+[user]
+	name = doener
+	email = doenerkebap@mailbox.org
+[core]
+	editor = vim
+[alias]
+	unstage = reset HEAD --
+	logg= log --pretty=oneline --graph --decorate --all --abbrev-commit
+[push]
+	default = simple
+[help]
+	autocorrect = 10
+[diff]
+	    tool = vimdiff
