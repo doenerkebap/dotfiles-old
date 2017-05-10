@@ -39,6 +39,7 @@ set mouse=a             " Enable the use of the mouse
 set ttymouse=xterm2
 set encoding=utf-8      " Character encoding
 set autoread            " Reload file if it has been changed outside of vim
+set cmdheight=2
 
 " Use <C-L> to clear the highlighting of search.
 if maparg('<C-L>', 'n') ==# ''
