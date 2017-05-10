@@ -17,6 +17,7 @@ set backspace=indent,eol,start " Make backspace function normally
 set autoindent          " Auto indent new line from current one
 set complete-=i         " Do not compete based on included files
 setlocal spell spelllang=de_de,en_us
+set nospell             " disable global spell checking (enable in ftplugins)
 set nrformats-=octal	" don't treat numbers starting with 0 as octals"
 set number              " show line numbers
 set relativenumber      " show line numbers relative to current line
