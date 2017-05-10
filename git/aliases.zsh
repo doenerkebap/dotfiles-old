@@ -1,0 +1,8 @@
+alias g='git'
+alias ga='git add'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gs='git status'
+alias gl='git log --pretty=oneline --graph --decorate --all --abbrev-commit'
