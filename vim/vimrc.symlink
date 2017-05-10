@@ -1,0 +1,62 @@
+set nocompatible        " Make vim more useful
+
+" load pathogen 
+execute pathogen#infect()
+
+" Enable undo, backup and swap files in ~/.vim
+set backup
+set undofile	
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
+colorscheme kantan
+syntax on               " Enable syntax highlighting
+set hlsearch            " Highlight search results
+filetype on             " Enable file type detection
+filetype plugin on      " Load a ftplugin.vim if exists for detected file type
+filetype indent on      " Load indent.vim if exists for detected file type
+set backspace=indent,eol,start " Make backspace function normally
+set autoindent          " Auto indent new line from current one
+set complete-=i         " Do not compete based on included files
+setlocal spell spelllang=de_de,en_us
+set nrformats-=octal	" don't treat numbers starting with 0 as octals"
+set number              " show line numbers
+set relativenumber      " show line numbers relative to current line
+set history=1000	" keep 1000 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+set autowrite 		" write file before make or when buffer is changed
+set formatoptions+=j	" Delete comment character when joining commented lines
+set timeout             " Time out on :mappings 
+set timeoutlen=3000     " --
+set ttimeout            " Time out on key codes
+set ttimeoutlen=20      " --
+set shell=/bin/zsh      " Set the shell executable
+set wildmenu            " Enhanced command line completion
+set scrolloff=4         " start scrolling #lines before border
+set sidescrolloff=5     " --
+set mouse=a             " Enable the use of the mouse
+set ttymouse=xterm2
+set encoding=utf-8      " Character encoding
+set autoread            " Reload file if it has been changed outside of vim
+
+" Use <C-L> to clear the highlighting of search.
+if maparg('<C-L>', 'n') ==# ''
+   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" Open new split panes to the right and bottom
+set splitbelow
+set splitright
+
+" Navigating splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>

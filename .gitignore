@@ -1,1 +1,4 @@
 .directory
+vim/vim.symlink/undo
+vim/vim.symlink/swap
+vim/vim.symlink/backup
