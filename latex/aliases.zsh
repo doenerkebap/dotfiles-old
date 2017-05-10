@@ -1,1 +1,3 @@
-alias rubber='rubber --inplace --maxerr -1 --pdf --short --warn all'
+alias rubber='rubber  --pdf --short --warn all'
+alias rubber-info='rubber-info --pdf --short --warn all'
+
