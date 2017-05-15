@@ -40,6 +40,7 @@ set ttymouse=xterm2
 set encoding=utf-8      " Character encoding
 set autoread            " Reload file if it has been changed outside of vim
 set cmdheight=2
+set tags+=../tags       "Search for tags file also in parent dire
 
 " Use <C-L> to clear the highlighting of search.
 if maparg('<C-L>', 'n') ==# ''
