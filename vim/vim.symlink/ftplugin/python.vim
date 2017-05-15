@@ -3,7 +3,6 @@ setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal autoindent
-set foldmethod=indent
 let python_highlight_all=1
 
 " Use the below highlight group when displaying bad whitespace is desired.
