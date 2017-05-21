@@ -1,5 +1,8 @@
 .directory
-vim/vim.symlink/undo
-vim/vim.symlink/swap
-vim/vim.symlink/backup
+vim/vim.symlink/undo/*
+!vim/vim.symlink/undo/.gitkeep
+vim/vim.symlink/swap/*
+!vim/vim.symlink/swap/.gitkeep
+vim/vim.symlink/backup/*
+!vim/vim.symlink/backup/.gitkeep
 system/ssh.symlink/known_hosts
