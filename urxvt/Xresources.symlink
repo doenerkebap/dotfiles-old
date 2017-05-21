@@ -1,8 +1,22 @@
-xterm.termName: xterm-256color
+URxvt.font: xft:Liberation Mono:pixelsize=13
 
-xterm.vt100.scaleHeight: 1.05
-xterm.vt100.faceName: Liberation Mono
-xterm.vt100.faceSize: 10
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintmedium
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+URxvt.matcher.pattern.1: \\bhttp\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+
+URxvt.saveLines: 10000
+URxvt.scrollBar: false
+
 
 ! kantan Xresources template
 *.foreground: #d0d0d0
