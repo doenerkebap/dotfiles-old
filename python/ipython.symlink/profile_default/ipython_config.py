@@ -185,7 +185,7 @@ c.InteractiveShellApp.matplotlib = 'qt5'
 #c.InteractiveShell.color_info = True
 
 ## Set the color scheme (NoColor, Neutral, Linux, or LightBG).
-#c.InteractiveShell.colors = 'Neutral'
+c.InteractiveShell.colors = 'Linux'
 
 ## 
 #c.InteractiveShell.debug = False
@@ -298,7 +298,7 @@ c.InteractiveShellApp.matplotlib = 'qt5'
 ## The name or class of a Pygments style to use for syntax
 #         highlighting: 
 #  tango, emacs, fruity, bw, paraiso-dark, abap, vim, monokai, xcode, pastie, algol, arduino, native, autumn, vs, default, algol_nu, lovelace, igor, murphy, paraiso-light, trac, borland, friendly, rainbow_dash, colorful, perldoc, rrt, manni, zenburn, solarizeddark, base16_ocean_dark, material_light, tomorrow, solarizedlight, blackboard
-#c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
+c.TerminalInteractiveShell.highlighting_style = 'solarizeddark' 
 
 ## Override highlighting format for specific tokens
 #c.TerminalInteractiveShell.highlighting_style_overrides = {}
