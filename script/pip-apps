@@ -2,3 +2,6 @@ ipython
 numpy
 matplotlib
 pyqt5
+scikit-image
+jupyter
+lmfit
