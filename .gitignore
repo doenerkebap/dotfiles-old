@@ -1,4 +1,10 @@
 .directory
+
+python/ipython.symlink/profile_default/history.sqlite
+system/ranger.config-symlink/bookmarks
+system/ranger.config-symlink/history
+
+# ignore all undo, swap and backup files, but keep their directories
 vim/vim.symlink/undo/*
 !vim/vim.symlink/undo/.gitkeep
 vim/vim.symlink/swap/*
