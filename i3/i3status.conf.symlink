@@ -6,12 +6,17 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
+## Base16 Solarized Dark
+# Author: Ethan Schoonover (http://ethanschoonover.com/solarized)
+#
+# You can use these variables anywhere in the i3 configuration file.
+
 general {
         colors = true
         interval = 1
-	color_good = "#9bb26a"
-	color_degraded = "#f4bf77"
-	color_bad = "#993a3b"
+	color_good = "#859900"
+	color_degraded = "#b58900"
+	color_bad = "#dc322f"
 }
 
 order += "disk /"

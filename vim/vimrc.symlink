@@ -7,7 +7,6 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-colorscheme kantan
 syntax on               " Enable syntax highlighting
 set hlsearch            " Highlight search results
 filetype on             " Enable file type detection
