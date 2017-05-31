@@ -7,6 +7,8 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
+set background=dark     " Use solaized colorscheme
+colorscheme solarized   " --
 syntax on               " Enable syntax highlighting
 set hlsearch            " Highlight search results
 filetype on             " Enable file type detection

@@ -202,7 +202,7 @@ bar {
     colors {
         background $base99
         separator  $base02
-        statusline $base05
+        statusline $base03
 
         # State             Border  BG      Text
         focused_workspace   $base05 $base0D $base00
