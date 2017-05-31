@@ -8,8 +8,11 @@ xserver-xorg
 X11-xserver-utils
 xinit
 i3
-fonts-liberation2
 firefox-esr
 ranger
-
-
+highlight
+zathura
+sxiv
+gimp
+nmap
+python3-pip
