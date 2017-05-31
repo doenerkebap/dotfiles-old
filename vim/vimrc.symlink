@@ -46,6 +46,7 @@ set ignorecase		" Case insensitive search
 set smartcase		" Case sensitive when search contains uppercase characters
 
 let buftabline_show=1
+let g:ctrlp_follow_symlinks = 1
 
 " Use <C-L> to clear the highlighting of search.
 if maparg('<C-L>', 'n') ==# ''
