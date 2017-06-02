@@ -20,6 +20,9 @@ general {
 }
 
 order += "disk /"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "load"
@@ -46,6 +49,7 @@ tztime local {
 
 cpu_temperature 0 {
         format = "T: %degrees °C"
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input"
 }
 
 cpu_usage {
