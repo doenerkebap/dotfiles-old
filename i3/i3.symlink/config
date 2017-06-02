@@ -180,6 +180,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screenshots
+bindsym Print exec scrot $HOME/pictures/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Print exec scrot -u $HOME/pictures/screenshoots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s $HOME/pictures/screenshoots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Border style for new windows
 new_window pixel 1
