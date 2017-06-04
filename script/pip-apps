@@ -6,3 +6,5 @@ scikit-image
 jupyter
 lmfit
 pygments-style-solarized
+pylint
+jedi
