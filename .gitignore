@@ -6,6 +6,9 @@ system/ranger.config-symlink/history
 
 __pycache__
 
+i3/i3.symlink/logfile
+vim/vim.symlink/.netrwhist
+
 # ignore all undo, swap and backup files, but keep their directories
 vim/vim.symlink/undo/*
 !vim/vim.symlink/undo/.gitkeep
