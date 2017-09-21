@@ -19,3 +19,7 @@ nmap
 python3-pip
 libx11-dev
 scrot
+vlc
+unclutter
+gstreamer1.0-plugins-ugly
+pmount
