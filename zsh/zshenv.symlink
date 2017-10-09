@@ -1,3 +1,7 @@
+# set default editor
+export VISUAL=vim
+export EDITOR=vim
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/dotfiles
 
