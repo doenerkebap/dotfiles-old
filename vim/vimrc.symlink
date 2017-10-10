@@ -61,10 +61,10 @@ set splitbelow
 set splitright
 
 " Navigating splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap gj <C-W><C-J>
+nnoremap gk <C-W><C-K>
+nnoremap gl <C-W><C-L>
+nnoremap gh <C-W><C-H>
 
 " Navigating wraped lines
 nnoremap j gj
