@@ -69,3 +69,7 @@ nnoremap gh <C-W><C-H>
 " Navigating wraped lines
 nnoremap j gj
 nnoremap k gk
+
+" Accelerate scrolling
+nnoremap <C-J> 4j
+nnoremap <C-K> 4k
