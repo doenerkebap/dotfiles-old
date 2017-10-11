@@ -228,3 +228,5 @@ client.unfocused        $base01 $base99 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
+
+for_window [class="Firefox-esr"] focus child, layout stacking, focus
