@@ -8,3 +8,8 @@ lmfit
 pygments-style-solarized
 pylint
 jedi
+netifaces
+basiciw
+psutil
+pyalsaaudio
+

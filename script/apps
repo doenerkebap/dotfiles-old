@@ -23,3 +23,5 @@ vlc
 unclutter
 gstreamer1.0-plugins-ugly
 pmount
+libasound2-dev
+libiw-dev
