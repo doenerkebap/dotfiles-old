@@ -74,11 +74,9 @@ nnoremap k gk
 nnoremap <C-J> 4j
 nnoremap <C-K> 4k
 
-"place in vimrc
-onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
-onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
-vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
-vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
+" Yank / paste to system clipboard
+vnoremap gy "+y
+nnoremap gp "+p
 
 " text objects for indented text
 " ai: with blank lines; ii: without blank lines
@@ -107,3 +105,8 @@ function! s:IndTxtObj(inner)
     normal! $
   endif
 endfunction
+
+onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
+onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
+vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
+vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
