@@ -10,6 +10,4 @@ alias l.='ls -d .*'
 alias cd..="cd .."
 alias ..='cd ..'
 
-alias cp='cp -i'
-alias rm='rm -i'
-
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
