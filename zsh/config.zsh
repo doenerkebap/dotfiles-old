@@ -15,3 +15,6 @@ setopt COMPLETE_IN_WORD        # cursor stays at position after completion
 setopt PROMPT_SUBST            #  allow parameter expansion, command substitution and arithmetic expansion in prompt
 
 bindkey -v                     # ?
+
+zle-line-init() { zle -K vicmd; }
+zle -N zle-line-init
