@@ -74,6 +74,10 @@ vnoremap j gj
 nnoremap k gk
 vnoremap k gk
 
+" Switching buffers
+nnoremap gn :bn<cr>
+nnoremap gN :bp<cr>
+
 " Accelerate scrolling
 nnoremap <C-J> 4j
 nnoremap <C-K> 4k
