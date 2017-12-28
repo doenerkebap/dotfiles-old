@@ -43,6 +43,8 @@ set cmdheight=2		" Prevents hit enter to continue dialogs
 set tags+=../tags       " Search for tags file also in parent dire
 set ignorecase		" Case insensitive search
 set smartcase		" Case sensitive when search contains uppercase characters
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file.
 
 let buftabline_show=1
 let g:ctrlp_follow_symlinks = 1
