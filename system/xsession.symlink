@@ -2,5 +2,8 @@ xset -b
 
 ulimit -c unlimited
 
-echo "Starting i3 at $(date)" >> ~/.i3/logfile
-exec /usr/bin/i3 -V -d all >> ~/.i3/logfile
+stalonetray &
+
+nm-applet --sm-disable &
+
+exec xmonad
