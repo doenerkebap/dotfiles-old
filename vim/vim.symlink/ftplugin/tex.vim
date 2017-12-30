@@ -9,9 +9,3 @@ setlocal linebreak      " --
 let &showbreak='   '    " chars to show before linebreak
 let g:tex_comment_nospell=1 " Don't spell check comments
 
-setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
-if filereadable("Makefile")
-	setlocal makeprg=make
-else
-	exec "setlocal makeprg=make\\ -f\\ $ZSH/latex/default.mk\\ " . substitute(bufname("%"),"tex$","pdf", "")
-endif
