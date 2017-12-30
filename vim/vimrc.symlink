@@ -86,6 +86,7 @@ nnoremap <C-K> 4k
 vnoremap gy "+y
 nnoremap gp "+p
 
+
 " text objects for indented text
 " ai: with blank lines; ii: without blank lines
 function! s:IndTxtObj(inner)
@@ -118,3 +119,10 @@ onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
 onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
 vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
 vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
+
+" input single character (repeatable)
+function! RepeatChar(char, count)
+  return repeat(a:char, a:count)
+endfunction
+nnoremap s :<C-U>exec "normal i".RepeatChar(nr2char(getchar()), v:count1)<CR>
+nnoremap S :<C-U>exec "normal a".RepeatChar(nr2char(getchar()), v:count1)<CR>
