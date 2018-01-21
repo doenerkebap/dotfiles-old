@@ -6,4 +6,5 @@ nm-applet --sm-disable &
 
 $ZSH/bin/keyboard_setup
 
-exec qtile
+touch ~/.qtile.log
+exec qtile >> ~/.qtile.log
