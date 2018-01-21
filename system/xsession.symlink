@@ -2,10 +2,8 @@ xset -b
 
 ulimit -c unlimited
 
-stalonetray &
-
 nm-applet --sm-disable &
 
 $ZSH/bin/keyboard_setup
 
-exec xmonad
+exec qtile

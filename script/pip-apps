@@ -12,4 +12,8 @@ netifaces
 basiciw
 psutil
 pyalsaaudio
+xcffib
+cairocffi
+qtile
+iwlib
 

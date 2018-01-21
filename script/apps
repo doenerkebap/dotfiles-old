@@ -26,3 +26,4 @@ pmount
 libasound2-dev
 libiw-dev
 xcape
+libpangocairo-1.0-0
