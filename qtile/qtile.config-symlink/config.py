@@ -26,63 +26,87 @@
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
 
-mod = "mod4"
+mod = "mod1"
 
 keys = [
-    # Switch between windows in current stack pane
-    Key(
-        [mod], "k",
-        lazy.layout.down()
-    ),
-    Key(
-        [mod], "j",
-        lazy.layout.up()
-    ),
+    Key([mod], "m", lazy.layout.grow()),
+    Key([mod], "n", lazy.layout.shrink()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "space", lazy.layout.swap_left()),
+    # Key([mod], ",", lazy.layout.cmd_grow()),
+    # Key([mod, "shift"], "h", lazy.layout.swap_left()),
+    # Key([mod, "shift"], "l", lazy.layout.swap_right()),
+    # Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    # Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    # Key([mod], "n", lazy.layout.normalize()),
+    # Key([mod], "o", lazy.layout.maximize()),
+    # # Switch between windows in current stack pane
+    # Key(
+    #     [mod], "k",
+    #     lazy.layout.down()
+    # ),
+    # Key(
+    #     [mod], "j",
+    #     lazy.layout.up()
+    # ),
 
-    # Move windows up or down in current stack
-    Key(
-        [mod, "control"], "k",
-        lazy.layout.shuffle_down()
-    ),
-    Key(
-        [mod, "control"], "j",
-        lazy.layout.shuffle_up()
-    ),
+    # # Move windows up or down in current stack
+    # Key(
+    #     [mod, "control"], "k",
+    #     lazy.layout.shuffle_down()
+    # ),
+    # Key(
+    #     [mod, "control"], "j",
+    #     lazy.layout.shuffle_up()
+    # ),
 
-    # Switch window focus to other pane(s) of stack
-    Key(
-        [mod], "space",
-        lazy.layout.next()
-    ),
+    # # Switch window focus to other pane(s) of stack
+    # Key(
+    #     [mod], "space",
+    #     lazy.layout.next()
+    # ),
 
-    # Swap panes of split stack
-    Key(
-        [mod, "shift"], "space",
-        lazy.layout.rotate()
-    ),
+    # # Swap panes of split stack
+    # Key(
+    #     [mod, "shift"], "space",
+    #     lazy.layout.rotate()
+    # ),
 
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"], "Return",
-        lazy.layout.toggle_split()
-    ),
-    Key([mod], "Return", lazy.spawn("xterm")),
+    # # Toggle between split and unsplit sides of stack.
+    # # Split = all windows displayed
+    # # Unsplit = 1 window displayed, like Max layout, but still with
+    # # multiple stack panes
+    # Key(
+    #     [mod, "shift"], "Return",
+    #     lazy.layout.toggle_split()
+    # ),
+    Key([mod], "Return", lazy.spawn("urxvt")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "q", lazy.window.kill()),
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+
+    # Sound
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
+
+    # Brightness
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 28")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
+
+    # Dsiplay
+    Key([], "XF86Display", lazy.spawn("arandr")),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+groups = [Group(i) for i in "uiop"]
 
 for i in groups:
     # mod1 + letter of group = switch to group
@@ -96,14 +120,17 @@ for i in groups:
     )
 
 layouts = [
-    layout.Max(),
-    layout.Stack(num_stacks=2)
+    # layout.Max(),
+    # layout.Tile(),
+    # layout.TreeTab(),
+    layout.xmonad.MonadTall(),
+    # layout.Stack(num_stacks=2)
 ]
 
 widget_defaults = dict(
-    font='Arial',
-    fontsize=16,
-    padding=3,
+    font='Liberation Mono',
+    fontsize=12,
+    padding=2,
 )
 
 screens = [
@@ -113,11 +140,11 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.TextBox("default config", name="default"),
+                widget.BatteryIcon(update_delay=5),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            30,
+            23,
         ),
     ),
 ]
@@ -131,6 +158,12 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
+
+@hook.subscribe.client_new
+def func(window):
+    print(window.cmd_inspect())
+        # window.floating = True
+
 dgroups_key_binder = None
 dgroups_app_rules = []
 main = None
@@ -138,7 +171,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating()
-auto_fullscreen = True
+auto_fullscreen = False
 focus_on_window_activation = "smart"
 extentions = []
 
