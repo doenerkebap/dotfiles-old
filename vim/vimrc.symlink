@@ -45,6 +45,7 @@ set ignorecase		" Case insensitive search
 set smartcase		" Case sensitive when search contains uppercase characters
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
+set scroll=2            " Scroll 2 lines with CTRL-U and CTRL-D
 
 let buftabline_show=1
 let g:ctrlp_follow_symlinks = 1
@@ -75,12 +76,9 @@ nnoremap k gk
 vnoremap k gk
 
 " Switching buffers
-nnoremap gn :bn<cr>
-nnoremap gN :bp<cr>
+nnoremap <C-J> :bn<cr>
+nnoremap <C-K> :bp<cr>
 
-" Accelerate scrolling
-nnoremap <C-J> 4j
-nnoremap <C-K> 4k
 
 " Yank / paste to system clipboard
 vnoremap gy "+y
