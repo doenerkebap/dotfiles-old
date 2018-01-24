@@ -1,4 +1,5 @@
 xset -b
+xset r rate 180 35
 
 ulimit -c unlimited
 
