@@ -15,7 +15,7 @@ URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bhttp\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
 
-URxvt.saveLines: 10000
+URxvt.saveLines: 20000
 URxvt.scrollBar: false
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
