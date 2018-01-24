@@ -6,18 +6,19 @@ from libqtile import layout, bar, widget, hook
 
 mod = "mod1"
 
+
 keys = [
     # Layout
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "k", lazy.layout.up()),
     Key([mod, "control"], "j", lazy.layout.shuffle_down()),
     Key([mod, "control"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "control"], "h", lazy.layout.swap_left()),
-    Key([mod, "control"], "l", lazy.layout.swap_right()),
-    Key([mod], "h", lazy.layout.shrink_main()),
+    Key([mod, "control"], "h", lazy.layout.swap_left(), lazy.layout.client_to_next()),
+    Key([mod, "control"], "l", lazy.layout.swap_right(), lazy.layout.client_to_previous()),
+    Key([mod], "l", lazy.layout.next(), lazy.layout.grow_main()),
+    Key([mod], "h", lazy.layout.previous(), lazy.layout.shrink_main()),
     Key([mod], "m", lazy.layout.grow()),
     Key([mod], "n", lazy.layout.shrink()),
-    Key([mod], "l", lazy.layout.grow_main()),
     Key([mod], "r", lazy.layout.reset()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "Tab", lazy.next_layout()),
@@ -58,6 +59,7 @@ for key in group_keys:
 
 layouts = [
     layout.Max(),
+    layout.Stack(),
     layout.xmonad.MonadTall(border_width=1),
 ]
 floating_layout = layout.Floating()
