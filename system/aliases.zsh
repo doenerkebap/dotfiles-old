@@ -1,6 +1,5 @@
 alias q='exit'
 alias c='clear'
-alias fm='ranger'
 
 alias ll='ls -l'
 alias la='ls -A'
