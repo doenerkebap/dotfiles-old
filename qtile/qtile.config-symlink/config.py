@@ -1,28 +1,4 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# -*- coding: utf-8 -*-
 
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
@@ -31,67 +7,24 @@ from libqtile import layout, bar, widget, hook
 mod = "mod1"
 
 keys = [
-    Key([mod], "m", lazy.layout.grow()),
-    Key([mod], "n", lazy.layout.shrink()),
+    # Layout
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "k", lazy.layout.up()),
-    Key([mod], "space", lazy.layout.swap_left()),
-    # Key([mod], ",", lazy.layout.cmd_grow()),
-    # Key([mod, "shift"], "h", lazy.layout.swap_left()),
-    # Key([mod, "shift"], "l", lazy.layout.swap_right()),
-    # Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    # Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    # Key([mod], "n", lazy.layout.normalize()),
-    # Key([mod], "o", lazy.layout.maximize()),
-    # # Switch between windows in current stack pane
-    # Key(
-    #     [mod], "k",
-    #     lazy.layout.down()
-    # ),
-    # Key(
-    #     [mod], "j",
-    #     lazy.layout.up()
-    # ),
-
-    # # Move windows up or down in current stack
-    # Key(
-    #     [mod, "control"], "k",
-    #     lazy.layout.shuffle_down()
-    # ),
-    # Key(
-    #     [mod, "control"], "j",
-    #     lazy.layout.shuffle_up()
-    # ),
-
-    # # Switch window focus to other pane(s) of stack
-    # Key(
-    #     [mod], "space",
-    #     lazy.layout.next()
-    # ),
-
-    # # Swap panes of split stack
-    # Key(
-    #     [mod, "shift"], "space",
-    #     lazy.layout.rotate()
-    # ),
-
-    # # Toggle between split and unsplit sides of stack.
-    # # Split = all windows displayed
-    # # Unsplit = 1 window displayed, like Max layout, but still with
-    # # multiple stack panes
-    # Key(
-    #     [mod, "shift"], "Return",
-    #     lazy.layout.toggle_split()
-    # ),
-    Key([mod], "Return", lazy.spawn("urxvt")),
-
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout()),
+    Key([mod, "control"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "control"], "k", lazy.layout.shuffle_up()),
+    Key([mod, "control"], "h", lazy.layout.swap_left()),
+    Key([mod, "control"], "l", lazy.layout.swap_right()),
+    Key([mod], "h", lazy.layout.shrink_main()),
+    Key([mod], "m", lazy.layout.grow()),
+    Key([mod], "n", lazy.layout.shrink()),
+    Key([mod], "l", lazy.layout.grow_main()),
+    Key([mod], "r", lazy.layout.reset()),
     Key([mod], "q", lazy.window.kill()),
+    Key([mod], "Tab", lazy.next_layout()),
 
+    # qtile
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd()),
 
     # Sound
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
@@ -99,52 +32,60 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
 
     # Brightness
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 28")),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
 
-    # Dsiplay
+    # Lauch apps
+    Key([mod], "Return", lazy.spawn("urxvt")),
+    Key([mod], "space", lazy.spawncmd()),
+    Key([mod], "s", lazy.spawn("urxvt -g 70x30 -e alsamixer")),
+    Key([mod], "c", lazy.spawn("urxvt -g 70x30 -e nmtui")),
     Key([], "XF86Display", lazy.spawn("arandr")),
-]
+    Key([mod], "d", lazy.spawn("arandr")),
 
-groups = [Group(i) for i in "uiop"]
+    # Screenshot
+    Key([], "Print", lazy.spawn("scrot")),
+    Key(["mod1"], "Print", lazy.spawn("scrot -s")),
+    ]
 
-for i in groups:
-    # mod1 + letter of group = switch to group
-    keys.append(
-        Key([mod], i.name, lazy.group[i.name].toscreen())
-    )
+group_names = ["Z", "U", "I", "O", "P", "UE", "+"]
+group_keys = ["z", "u", "i", "o", "p", "udiaeresis", "plus"]
+groups = [Group(i) for i in group_names]
 
-    # mod1 + shift + letter of group = switch to & move focused window to group
-    keys.append(
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name))
-    )
+for name, key  in zip(group_names, group_keys):
+    keys.append(Key([mod], key, lazy.group[name].toscreen()))
+    keys.append(Key([mod, "control"], key, lazy.window.togroup(name)))
 
 layouts = [
-    # layout.Max(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    layout.xmonad.MonadTall(),
-    # layout.Stack(num_stacks=2)
+    layout.Max(),
+    layout.xmonad.MonadTall(border_width=1),
 ]
+floating_layout = layout.Floating()
+
 
 widget_defaults = dict(
     font='Liberation Mono',
-    fontsize=12,
-    padding=2,
+    fontsize=13,
+    padding=1,
 )
 
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.GroupBox(borderwidth=2, center_aligned=True),
                 widget.WindowName(),
+                widget.TextBox("eth: "),
+                widget.Net(interface="enp0s25"),
+                widget.TextBox("  wlan: "),
+                widget.wlan.Wlan(interface="wlp3s0", format="{essid} {percent:2.0%} "),
+                widget.Net(interface="wlp3s0"),
+                widget.Prompt(),
                 widget.BatteryIcon(update_delay=5),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
-            23,
+            20,
         ),
     ),
 ]
@@ -160,9 +101,14 @@ mouse = [
 
 
 @hook.subscribe.client_new
-def func(window):
-    print(window.cmd_inspect())
-        # window.floating = True
+def default_floats(window):
+    names = ["alsamixer", "nmtui"]
+    classes = ["arandr"]
+    wm_class = window.window.get_wm_class()[0]
+    wm_name = window.name
+    if wm_name in names or wm_class in classes:
+        window.floating = True
+
 
 dgroups_key_binder = None
 dgroups_app_rules = []
@@ -170,10 +116,11 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating()
 auto_fullscreen = False
 focus_on_window_activation = "smart"
 extentions = []
+
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
