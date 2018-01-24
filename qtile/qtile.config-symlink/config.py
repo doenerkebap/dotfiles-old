@@ -48,13 +48,13 @@ keys = [
     Key(["mod1"], "Print", lazy.spawn("scrot -s")),
     ]
 
-group_names = ["Z", "U", "I", "O", "P", "UE", "+"]
+group_labels = ["Z", "U", "I", "O", "P", "Ü", "+"]
 group_keys = ["z", "u", "i", "o", "p", "udiaeresis", "plus"]
-groups = [Group(i) for i in group_names]
+groups = [Group(name, label=label) for name, label in zip(group_keys, group_labels)]
 
-for name, key  in zip(group_names, group_keys):
-    keys.append(Key([mod], key, lazy.group[name].toscreen()))
-    keys.append(Key([mod, "control"], key, lazy.window.togroup(name)))
+for key in group_keys:
+    keys.append(Key([mod], key, lazy.group[key].toscreen()))
+    keys.append(Key([mod, "control"], key, lazy.window.togroup(key)))
 
 layouts = [
     layout.Max(),
