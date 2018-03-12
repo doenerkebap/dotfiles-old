@@ -1,0 +1,3 @@
+#!/bin/sh
+echo $1
+zathura -x "vim --servername vim  --remote \"+let syncpdf='$1' | %{line} \" %{input}" $*
