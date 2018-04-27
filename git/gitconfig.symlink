@@ -9,3 +9,7 @@
 	autocorrect = 10
 [diff]
 	tool = vimdiff
+[difftool]
+	prompt = false
+[diff "pdf2txt"]
+	textconv = pdf2txt
