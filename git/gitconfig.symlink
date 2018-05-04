@@ -5,8 +5,6 @@
 	editor = vim
 [push]
 	default = simple
-[help]
-	autocorrect = 10
 [diff]
 	tool = vimdiff
 [difftool]
