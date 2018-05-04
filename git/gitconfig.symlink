@@ -13,3 +13,8 @@
 	prompt = false
 [diff "pdf2txt"]
 	textconv = pdf2txt
+[merge]
+	conflictstyle = diff3
+	tool = vimdiff
+[mergetool]
+	prompt = false
